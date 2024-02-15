@@ -1,2 +1,2 @@
 # CalPolyPomona
-All coursework at Cal Poly Pomona
+This is all my course work done at Cal Poly Pomona for Aerospace Engineering
