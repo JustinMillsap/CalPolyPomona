@@ -1,0 +1,14 @@
+Helpful Git Commands
+
+~~~~~~~~~~~~ TO PUSH CHANGES FROM LOCAL TO REMOTE REPOSITORY ~~~~~~~~~~~
+
+! git add .   
+! git commit -m " <message>
+! git push
+
+
+
+~~~~~~~~~~~~ BRANCH RELATED COMMANDS ~~~~~~~~~~~
+! git branch < insert name >   %% Creates a new branch
+! git checkout < branch >      %% Switches to a specified branch
+! git push -u origin < branch >  %% Adds new branch to remote repository   
