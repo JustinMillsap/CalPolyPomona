@@ -99,7 +99,7 @@ alpha = 110 ;
 
 % Define Rotation Sequence (e.g. [3-2-1] use 321)
 
-Rot_Seq = 321 ;
+Rot_Seq = 313 ;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  DO NOT EDIT    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -181,7 +181,18 @@ disp(theta) ; disp(phi) ; disp(psi)
 
 
 
+%% Rotation Matrix Multiplication (symbolic)
 
+
+
+syms i omega omega_cap
+
+R1 = [ 1 0 0  ; 0 cos(i) sin(i) ; 0 -sin(i) cos(i)];
+%R2 = [cos(beta) 0 -sin(beta); 0 1 0; sin(beta) 0 cos(beta)];
+R3 = [ cos(omega) sin(omega) 0 ; -sin(omega) cos(omega) 0 ; 0 0 1];
+R3_prime = [ cos(omega_cap) sin(omega_cap) 0 ; -sin(omega_cap) cos(omega_cap) 0 ; 0 0 1];
+
+Rot_seq_313 = R3_prime*R1*R3
 
 
 
