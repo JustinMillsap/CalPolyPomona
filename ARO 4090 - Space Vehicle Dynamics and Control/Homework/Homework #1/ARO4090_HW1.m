@@ -59,20 +59,20 @@ R_BI = [r11 r12 r13 ; r21 r22 r23 ;  r31 r32 r33];
 
 % 3-2-1 Rotation Matrix
 theta = asind( abs(R_BI(1,3)) );
-alpha = atan2d(R_BI(1,2) , R_BI(1,1));
-gamma = atan2d(R_BI(2,3) , R_BI(3,3) ) + 360;
-R1 = [ 1 0 0  ; 0 cosd(gamma) sind(gamma) ; 0 -sind(gamma) cosd(gamma)];
+phi = atan2d(R_BI(1,2) , R_BI(1,1));
+psi = atan2d(R_BI(2,3) , R_BI(3,3) ) + 360;
+R1 = [ 1 0 0  ; 0 cosd(psi) sind(psi) ; 0 -sind(psi) cosd(psi)];
 R2 = [cosd(theta) 0 -sind(theta); 0 1 0; sind(theta) 0 cosd(theta)];
-R3 = [ cosd(alpha) sind(alpha) 0 ; -sind(alpha) cosd(alpha) 0 ; 0 0 1];
+R3 = [ cosd(phi) sind(phi) 0 ; -sind(phi) cosd(phi) 0 ; 0 0 1];
 Rot_321 = R1*R2*R3
 
 % 2-3-2 Rotation Matrx
-beta = acosd(R_BI(2,2))
-alpha = atan2d(R_BI(3,2) , R_BI(1,2)) + 360
-gamma = atan2d(R_BI(2,3) , -R_BI(2,1)) + 360
-R1 = [ 1 0 0  ; 0 cosd(alpha) sind(alpha) ; 0 -sind(alpha) cosd(alpha)];
-R2 = [cosd(beta) 0 -sind(beta); 0 1 0; sind(beta) 0 cosd(beta)];
-R3 = [ cosd(gamma) sind(gamma) 0 ; -sind(gamma) cosd(gamma) 0 ; 0 0 1];
+theta = acosd(R_BI(2,2))
+phi = atan2d(R_BI(3,2) , R_BI(1,2)) + 360
+psi = atan2d(R_BI(2,3) , -R_BI(2,1)) + 360
+R1 = [ 1 0 0  ; 0 cosd(phi) sind(phi) ; 0 -sind(phi) cosd(phi)];
+R2 = [cosd(theta) 0 -sind(theta); 0 1 0; sind(theta) 0 cosd(theta)];
+R3 = [ cosd(psi) sind(psi) 0 ; -sind(psi) cosd(psi) 0 ; 0 0 1];
 
 %% Problem 3 
 
@@ -93,20 +93,21 @@ disp('Part B')
 
 % Input Eurler Angles [degrees]
 
-gamma = 200 ;
-beta = 60   ;
-alpha = 110 ;
+psi = 45 ;
+theta = 0   ;
+phi = 30 ;
 
 % Define Rotation Sequence (e.g. [3-2-1] use 321)
 
-Rot_Seq = 313 ;
+Rot_Seq = 321 ;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  DO NOT EDIT    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Define the elementary rotation matrices
-R1 = [ 1 0 0  ; 0 cosd(gamma) sind(gamma) ; 0 -sind(gamma) cosd(gamma)];
-R2 = [cosd(beta) 0 -sind(beta); 0 1 0; sind(beta) 0 cosd(beta)];
-R3 = [ cosd(alpha) sind(alpha) 0 ; -sind(alpha) cosd(alpha) 0 ; 0 0 1];
+
+R1 = [ 1 0 0  ; 0 cosd(phi) sind(phi) ; 0 -sind(phi) cosd(phi)];
+R2 = [cosd(theta) 0 -sind(theta); 0 1 0; sind(theta) 0 cosd(theta)];
+R3 = [ cosd(psi) sind(psi) 0 ; -sind(psi) cosd(psi) 0 ; 0 0 1];
 
 
 

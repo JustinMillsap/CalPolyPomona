@@ -1,4 +1,4 @@
-% ARO 4090 - Space Vehicle Dyn. & Cntrl. | Dr. Maggia | Justin Millsap | Homework 5 %
+% ARO 4090 - Space Vehicle Dyn. & Cntrl. | Dr. Maggia | Justin Millsap | Homework 2 %
 clc; clear; close all;
 
 %% Problem 1

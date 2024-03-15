@@ -1,0 +1,33 @@
+%% Block 1 - Input: attitude (alpha,a) | Output: 3x3 Rotation Matrix R
+clear; clc;
+
+alpha = 104.47               % Rotation Angles [ degrees ]
+a = [-1 ; 1 ; -sqrt(3)]      % Axis of Rotation Versor
+
+
+%% Block 2 - Input: 3x3 Rotation Matrix | Output: Attitude (alpha , a)
+
+clear; clc;
+% Input values for 3x3 Rotation Matrix R
+
+r11 = 0;  r12 = 0.7067 ;   r13 = sqrt(3)/2;
+r21 = -1 ;  r22 = 0 ;   r23 = -0;
+r31 = 0;  r32 = -sqrt(3)/2;   r33 = 1/2;
+R = [r11 r12 r13 ; r21 r22 r23 ;  r31 r32 r33];
+
+
+
+%% Block 3 - Input: Yaw, pitch, and roll angles | Output: 3x3 Rotation Matrix R
+
+psi =  0             % Yaw [ Degrees ]
+theta = 30            % Pitches [ Degrees ]
+phi =     10         % Roll [ Degrees ]
+
+%% Block 4 - Input: Rotation matrix | Output: Yaw, pitch, & Roll with following parameters
+% 0 =< psi =< 360 ; -90 =< theta =< 90 ; -180 =< phi =< 180
+
+r11 = 0;  r12 = 1/2 ;   r13 = sqrt(3)/2;
+r21 = -1 ;  r22 = 0 ;   r23 = -0;
+r31 = 0;  r32 = -sqrt(3)/2;   r33 = 1/2;
+R = [r11 r12 r13 ; r21 r22 r23 ;  r31 r32 r33];
+
