@@ -1,0 +1,353 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Millsap_Justin_Class_Project_ARO_4060</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-05-14">
+<meta name="DC.source" content="Millsap_Justin_Class_Project_ARO_4060.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#4">Problem 2</a>
+</li>
+</ul>
+</div>
+<pre class="codeinput">
+<span class="comment">% ARO - 4060 Class Project</span>
+<span class="comment">% Written By: Justin Millsap</span>
+<span class="comment">% Instructor: Dr. Karimi</span>
+<span class="comment">% Date: 05/05/2024</span>
+<span class="comment">% Tool Version: R2023b</span>
+<span class="comment">% other .m files required: RotationMatrix.m [function]</span>
+</pre>
+<pre class="codeinput">clear; clc; close <span class="string">all</span>
+<span class="comment">% Define the base excitation data points</span>
+y = [0.0; 0.00571634384576599; 0.0172961399245937; 0.0215661733228299; 0.0138433053175935;
+     0.00475824598689792; 0.00940235333989425; 0.0298244388227628; 0.0502561943723699;
+     0.0516260538077677; 0.0311672997795811; 0.00657207675777726; -0.00043850430233673;
+     0.0150661812622991; 0.0369781637016863; 0.0444861334353839; 0.032063551445643;
+     0.0130695841363085; 0.00450012342523607; 0.00980150594910536; 0.0175350556867159;
+     0.0158705130787799; 0.00603906690334467; 0.0];
+
+<span class="comment">% Given system parameters</span>
+m = 1; <span class="comment">% mass in kg</span>
+k = 100; <span class="comment">% spring constant in N/m</span>
+zeta = 0.15; <span class="comment">% damping ratio</span>
+omega_n = sqrt(k/m); <span class="comment">% natural frequency</span>
+c = 2 * m * omega_n * zeta; <span class="comment">% damping coefficient</span>
+T = pi/2; <span class="comment">% period of the base motion</span>
+<span class="comment">% Number of data points and harmonics</span>
+N = length(y);
+num_harmonics = 4;
+<span class="comment">% Calculate Fourier coefficients</span>
+a0 = 2 * sum(y) / N;
+a = zeros(num_harmonics, 1);
+b = zeros(num_harmonics, 1);
+t = linspace(0, T, N); <span class="comment">% Time vector for one period</span>
+<span class="keyword">for</span> n = 1:num_harmonics
+    a(n) = 2 * sum(y .* cos(2 * pi * n * t' / T)) / N;
+    b(n) = 2 * sum(y .* sin(2 * pi * n * t' / T)) / N;
+<span class="keyword">end</span>
+t_extended = linspace(0, 2*T, 10*2*N - 1);
+y_recreated = a0/2 * ones(size(t_extended));
+<span class="keyword">for</span> n = 1:num_harmonics
+    y_recreated = y_recreated + a(n) * cos(2 * pi * n * t_extended / T) <span class="keyword">...</span>
+                                + b(n) * sin(2 * pi * n * t_extended / T);
+<span class="keyword">end</span>
+<span class="comment">% 1-b</span>
+    t_span = [0 2*T];
+    x0 = [0; 0];
+    [t, x] = ode45(@(t,x) eom(t, x, m, c, k, y_recreated, t_extended, T), t_span, x0);
+    x =(0.032)*x*10^4;
+figure(1);
+subplot(2,1,1)
+hold <span class="string">on</span>
+plot(t_extended(1:end/2), y_recreated(1:end/2), <span class="string">'r-'</span>, <span class="string">'LineWidth'</span>, 1.5);
+plot(t_extended(end/2+1:end), y_recreated(end/2+1:end), <span class="string">'g-'</span>, <span class="string">'LineWidth'</span>, 1.5);
+xlabel(<span class="string">'Time (sec)'</span>);
+ylabel(<span class="string">'Base Excitation y(t) [m]'</span>);
+title(<span class="string">'Prob 1a'</span>)
+grid <span class="string">on</span>
+hold <span class="string">off</span>
+
+
+  subplot(2,1,2)
+    plot(t, x(:,1)); <span class="comment">% x(:,1) is the displacement over time</span>
+    xlabel(<span class="string">'Time (sec)'</span>);
+    ylabel(<span class="string">'Displacement x(t) [m]'</span>);
+    title(<span class="string">'Prob 1b'</span>);
+    grid <span class="string">on</span>;
+</pre>
+<pre class="codeoutput">Warning: Integer operands are required for colon operator when used as
+index. 
+Warning: Integer operands are required for colon operator when used as
+index. 
+Warning: Integer operands are required for colon operator when used as
+index. 
+Warning: Integer operands are required for colon operator when used as
+index. 
+</pre>
+<img vspace="5" hspace="5" src="Millsap_Justin_Class_Project_ARO_4060_01.png" alt=""> <pre class="codeinput">y = 2024;
+m = 9;
+d = 1
+
+    J0 = 367*y - fix(7/4*(y+fix((m+9)/12))) + fix(275*m/9) + d + 1721013.5;
+
+    T0 = (J0-2451545)/36525;
+
+    thetaG0 = mod(100.4606184 + 36000.77004*T0 + 3.87933E-4*T0^2 - 2.583E-8*T0^3,360);
+</pre>
+<pre class="codeoutput">
+d =
+
+     1
+
+</pre>
+<h2 id="4">Problem 2</h2>
+<pre class="codeinput">m = 1;
+k = 100;
+omega_n = sqrt(k/m);
+omega = linspace(0, 4*omega_n, 500);
+r = omega/omega_n;
+
+zetas = [0.05, 0.1, 0.2, 0.25, 0.5, 1.0];
+
+TR = zeros(500, 6);
+
+<span class="keyword">for</span> i = 1:length(zetas)
+    zeta = zetas(i);
+     TR(:,i) = sqrt((1 + (2.*zeta.*r).^2).^0.5 ./ ((1 - r.^2).^2 + (2.*zeta.*r).^2));
+<span class="keyword">end</span>
+
+figure(2);
+<span class="keyword">for</span> i = 1:length(zetas)
+    plot(r, TR(:, i));
+    hold <span class="string">on</span>;
+<span class="keyword">end</span>
+y_limits = [05];
+
+<span class="comment">% Adding vertical lines</span>
+line([sqrt(2) sqrt(2)], y_limits, <span class="string">'Color'</span>, <span class="string">'black'</span>, <span class="string">'LineStyle'</span>, <span class="string">'--'</span>, <span class="string">'DisplayName'</span>, <span class="string">'y = sqrt(2)'</span>);
+line([1 1], y_limits, <span class="string">'Color'</span>, <span class="string">'red'</span>, <span class="string">'LineStyle'</span>, <span class="string">'--'</span>, <span class="string">'DisplayName'</span>, <span class="string">'y = 1'</span>);
+
+legend(<span class="string">'ζ=0.05'</span>, <span class="string">'ζ=0.1'</span>, <span class="string">'ζ=0.2'</span>, <span class="string">'ζ=0.25'</span>, <span class="string">'ζ=0.5'</span>, <span class="string">'ζ=1.0'</span>, <span class="string">'y = sqrt(2)'</span>, <span class="string">'y = 1'</span>);
+grid <span class="string">on</span>
+xlabel(<span class="string">'Frequency Ratio r (ω/ω_n)'</span>);
+ylabel(<span class="string">'Displacement Transmissibility TR'</span>);
+title(<span class="string">'Prob 2'</span>);
+
+
+<span class="keyword">function</span> dxdt = eom(t, x, m, c, k, y_recreated, t_extended, T)
+    <span class="comment">% Interpolate y(t) at the current time</span>
+    y_t = interp1(t_extended, y_recreated, mod(t, T), <span class="string">'linear'</span>, <span class="string">'extrap'</span>);
+
+    <span class="comment">% Equations of motion</span>
+    dxdt = zeros(2,1);
+    dxdt(1) = x(2);
+    dxdt(2) = (1/m) * (-(c * x(2)) - (k * x(1)) + c * y_t);
+<span class="keyword">end</span>
+</pre>
+<img vspace="5" hspace="5" src="Millsap_Justin_Class_Project_ARO_4060_02.png" alt=""> <p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+% ARO - 4060 Class Project
+% Written By: Justin Millsap
+% Instructor: Dr. Karimi
+% Date: 05/05/2024
+% Tool Version: R2023b
+% other .m files required: RotationMatrix.m [function]
+%%
+clear; clc; close all
+% Define the base excitation data points
+y = [0.0; 0.00571634384576599; 0.0172961399245937; 0.0215661733228299; 0.0138433053175935; 
+     0.00475824598689792; 0.00940235333989425; 0.0298244388227628; 0.0502561943723699; 
+     0.0516260538077677; 0.0311672997795811; 0.00657207675777726; -0.00043850430233673; 
+     0.0150661812622991; 0.0369781637016863; 0.0444861334353839; 0.032063551445643; 
+     0.0130695841363085; 0.00450012342523607; 0.00980150594910536; 0.0175350556867159; 
+     0.0158705130787799; 0.00603906690334467; 0.0];
+
+% Given system parameters
+m = 1; % mass in kg
+k = 100; % spring constant in N/m
+zeta = 0.15; % damping ratio
+omega_n = sqrt(k/m); % natural frequency
+c = 2 * m * omega_n * zeta; % damping coefficient
+T = pi/2; % period of the base motion
+% Number of data points and harmonics
+N = length(y);
+num_harmonics = 4;
+% Calculate Fourier coefficients
+a0 = 2 * sum(y) / N;
+a = zeros(num_harmonics, 1);
+b = zeros(num_harmonics, 1);
+t = linspace(0, T, N); % Time vector for one period
+for n = 1:num_harmonics
+    a(n) = 2 * sum(y .* cos(2 * pi * n * t' / T)) / N;
+    b(n) = 2 * sum(y .* sin(2 * pi * n * t' / T)) / N;
+end
+t_extended = linspace(0, 2*T, 10*2*N - 1);  
+y_recreated = a0/2 * ones(size(t_extended));
+for n = 1:num_harmonics
+    y_recreated = y_recreated + a(n) * cos(2 * pi * n * t_extended / T) ...
+                                + b(n) * sin(2 * pi * n * t_extended / T);
+end
+% 1-b
+    t_span = [0 2*T]; 
+    x0 = [0; 0]; 
+    [t, x] = ode45(@(t,x) eom(t, x, m, c, k, y_recreated, t_extended, T), t_span, x0);
+    x =(0.032)*x*10^4; 
+figure(1);
+subplot(2,1,1)
+hold on
+plot(t_extended(1:end/2), y_recreated(1:end/2), 'r-', 'LineWidth', 1.5);
+plot(t_extended(end/2+1:end), y_recreated(end/2+1:end), 'g-', 'LineWidth', 1.5);
+xlabel('Time (sec)');
+ylabel('Base Excitation y(t) [m]');
+title('Prob 1a')
+grid on
+hold off
+
+
+  subplot(2,1,2)
+    plot(t, x(:,1)); % x(:,1) is the displacement over time
+    xlabel('Time (sec)');
+    ylabel('Displacement x(t) [m]');
+    title('Prob 1b');
+    grid on;
+    
+%%
+
+y = 2024;
+m = 9;
+d = 1
+
+    J0 = 367*y - fix(7/4*(y+fix((m+9)/12))) + fix(275*m/9) + d + 1721013.5;
+    
+    T0 = (J0-2451545)/36525;
+
+    thetaG0 = mod(100.4606184 + 36000.77004*T0 + 3.87933E-4*T0^2 - 2.583E-8*T0^3,360);
+
+%%  Problem 2
+m = 1; 
+k = 100; 
+omega_n = sqrt(k/m); 
+omega = linspace(0, 4*omega_n, 500); 
+r = omega/omega_n;
+
+zetas = [0.05, 0.1, 0.2, 0.25, 0.5, 1.0];
+
+TR = zeros(500, 6);
+
+for i = 1:length(zetas)
+    zeta = zetas(i);
+     TR(:,i) = sqrt((1 + (2.*zeta.*r).^2).^0.5 ./ ((1 - r.^2).^2 + (2.*zeta.*r).^2));
+end
+
+figure(2);
+for i = 1:length(zetas)
+    plot(r, TR(:, i));
+    hold on; 
+end
+y_limits = [05];
+
+% Adding vertical lines
+line([sqrt(2) sqrt(2)], y_limits, 'Color', 'black', 'LineStyle', 'REPLACE_WITH_DASH_DASH', 'DisplayName', 'y = sqrt(2)');
+line([1 1], y_limits, 'Color', 'red', 'LineStyle', 'REPLACE_WITH_DASH_DASH', 'DisplayName', 'y = 1');
+
+legend('ζ=0.05', 'ζ=0.1', 'ζ=0.2', 'ζ=0.25', 'ζ=0.5', 'ζ=1.0', 'y = sqrt(2)', 'y = 1');
+grid on
+xlabel('Frequency Ratio r (ω/ω_n)');
+ylabel('Displacement Transmissibility TR');
+title('Prob 2');
+
+
+function dxdt = eom(t, x, m, c, k, y_recreated, t_extended, T)
+    % Interpolate y(t) at the current time
+    y_t = interp1(t_extended, y_recreated, mod(t, T), 'linear', 'extrap');
+
+    % Equations of motion
+    dxdt = zeros(2,1);
+    dxdt(1) = x(2);
+    dxdt(2) = (1/m) * (-(c * x(2)) - (k * x(1)) + c * y_t);
+end
+##### SOURCE END #####
+-->
+</body>
+</html>

@@ -1,0 +1,55 @@
+%% ARO-3220 Feedback Control Systems | Homework 7 | Dr. Marco Maggia %%\
+
+%% Question 1
+
+%% Lead/Lag Compensators
+%% Part a) Design a phase-lead compensator
+clc;clear;
+
+wn =   0.7;   % Natural Frequency [rad/s]
+zeta = 0.;  % Damping Ratio
+
+Ixx = 40;
+Iyy = 50;
+Izz = 40;
+Rc = 300;
+mu = 398600;
+w_0 = sqrt(mu/Rc^3);
+
+% PD Controller
+kd = 11.2;
+kp - 80.63;
+G_cs = kp + kd*s
+G_s = 1/(Iyy*s^2 + 3*w_0^2(Ixx-Izz))
+% Plot the root locus
+s = tf("s");
+
+
+
+T_s = (G_cs*G_s)/(1+G_cs*G_s)
+
+% Error Function
+E_s = 1/(1+T_s);
+
+figure (1); 
+
+% Plot Figure 1 (root locus)
+subplot(2,1,1);
+rlocus(L_s); hold on
+
+% Maker to define Dominant Poles
+real_part = -8;  % real part
+imag_part = 6.0;  % positive imaginary part
+real_part2 = -8;  % real part
+imag_part2 = -6.0;  %negative imaginary part
+plot(real_part, imag_part, 'rs', 'MarkerSize', 5);
+plot(real_part2, imag_part2, 'rs', 'MarkerSize', 5);
+hold off
+
+% Plot Figure 2 (step response)
+subplot(2,1,2);
+step(E_s);
+stepinfo(E_s);
+
+return
+ 

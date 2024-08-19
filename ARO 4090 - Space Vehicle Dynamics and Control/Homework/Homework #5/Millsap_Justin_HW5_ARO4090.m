@@ -1,7 +1,7 @@
 % ARO 4090 - Space Vehicle Dyn. & Cntrl. | Dr. Maggia | Justin Millsap %
 clc; clear; close all;
 
-%% Problem 1 
+%% Problem 1
 
 Yaw = 50;
 

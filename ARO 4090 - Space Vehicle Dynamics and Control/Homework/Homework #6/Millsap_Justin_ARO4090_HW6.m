@@ -11,6 +11,8 @@
 % Pitch = 0
 % Roll = 30
 
+addpath('C:\Users\jtmil\OneDrive\Desktop\Cal Poly Pomona\CPP GIT\ARO 4090 - Space Vehicle Dynamics and Control\Functions') % This is the path to access all functions regarding Space Dynamics & Control
+
 R_BI = RotationMatrix(45 , 0 , 30 , 321) ; % ( Yaw, Pitch, Roll, Rot_Seq )
 
 R_IB = R_BI' ;
@@ -20,5 +22,14 @@ disp(R_BI);
 disp("The instantenous roation matrix for the I-RF is");
 disp("")
 disp(R_IB);
+
+
+R_BI_PE = RotationMatrix(180 , 0 , 180 , 321)
+
+H_B = [0 ; 0.01363 ; -0.00148];
+
+H_I = R_IB*H_B
+
+w = [0 ; 18.8 ; -7.4]
 
 
